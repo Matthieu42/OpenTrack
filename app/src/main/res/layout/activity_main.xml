@@ -5,34 +5,37 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity" tools:layout_editor_absoluteY="81dp">
 
     <TextView
             android:layout_width="97dp"
             android:layout_height="32dp"
             android:id="@+id/textView3" android:text="Duration"
-            android:textSize="24sp" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/pauseButton"
-            app:layout_constraintVertical_bias="0.295" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="68dp"/>
+            android:textSize="24sp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="114dp" android:layout_marginStart="68dp"/>
     <Button
             android:text="Start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/startButton" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="24dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="56dp"
-            android:onClick="startTracking"/>
+            android:id="@+id/startButton"
+            android:onClick="onClick"
+            app:layout_constraintTop_toTopOf="@+id/pauseButton"
+            app:layout_constraintBottom_toBottomOf="@+id/pauseButton" android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
     <Button
             android:text="Pause"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/pauseButton" android:layout_marginBottom="56dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="68dp"/>
+            android:id="@+id/pauseButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginStart="68dp"
+            android:layout_marginBottom="56dp"/>
     <TextView
             android:layout_width="97dp"
-            android:layout_height="32dp" tools:layout_editor_absoluteY="114dp"
+            android:layout_height="32dp"
             android:id="@+id/durationTextView"
-            android:textSize="24sp" android:layout_marginStart="8dp"
+            android:textSize="24sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView3" android:layout_marginStart="18dp"
             app:layout_constraintStart_toEndOf="@+id/textView3"/>
 </android.support.constraint.ConstraintLayout>
