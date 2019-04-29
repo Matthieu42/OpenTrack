@@ -44,10 +44,10 @@
         android:id="@+id/durationTextView"
         android:layout_width="0dp"
         android:layout_height="32dp"
-        android:layout_marginStart="18dp"
+        android:layout_marginEnd="68dp"
         android:textSize="24sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/durationLabel"
-        app:layout_constraintStart_toEndOf="@+id/durationLabel" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/speedLabel"
@@ -63,10 +63,10 @@
         android:id="@+id/speedTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
+        android:layout_marginEnd="68dp"
         android:textSize="24sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/speedLabel"
-        app:layout_constraintStart_toEndOf="@+id/speedLabel" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/avgSpeedLabel"
@@ -82,10 +82,10 @@
         android:id="@+id/avgSpeedTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
+        android:layout_marginEnd="68dp"
         android:textSize="24sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/avgSpeedLabel"
-        app:layout_constraintStart_toEndOf="@+id/avgSpeedLabel" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/distanceLabel"
@@ -101,9 +101,9 @@
         android:id="@+id/distanceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
+        android:layout_marginEnd="68dp"
         android:textSize="24sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/distanceLabel"
-        app:layout_constraintStart_toEndOf="@+id/distanceLabel" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
