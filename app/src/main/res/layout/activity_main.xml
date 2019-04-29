@@ -87,4 +87,23 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/avgSpeedLabel"
         app:layout_constraintStart_toEndOf="@+id/avgSpeedLabel" />
 
+    <TextView
+        android:id="@+id/distanceLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/distance"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/avgSpeedLabel"
+        app:layout_constraintTop_toBottomOf="@+id/avgSpeedLabel" />
+
+    <TextView
+        android:id="@+id/distanceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/distanceLabel"
+        app:layout_constraintStart_toEndOf="@+id/distanceLabel" />
+
 </android.support.constraint.ConstraintLayout>
