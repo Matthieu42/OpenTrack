@@ -7,19 +7,26 @@ class Trip(nameP : String){
     private var name = nameP
     private var startTime : Long = 0
     private var currentTime: Long = 0
+    private var paused:Boolean = true
 
 
     public fun startTrip(){
-
+        this.paused = false
         this.startTime = currentTimeMillis()
     }
 
     public fun pauseTrip(){
+        this.paused = true
 
     }
 
-    public fun  stopTrip(){
+    public fun unPauseTrip(){
+        this.paused = true
 
+    }
+
+    public fun stopTrip(){
+        pauseTrip()
     }
 
     public fun setCurrentTime() {
@@ -29,5 +36,8 @@ class Trip(nameP : String){
     public fun getCurrentTime() : Long{
         this.setCurrentTime()
         return currentTime
+    }
+    public fun isPaused() : Boolean{
+        return this.paused
     }
 }
