@@ -8,6 +8,7 @@ class Trip(nameP : String){
     private var startTime : Long = 0
     private var currentTime: Long = 0
     private var paused:Boolean = true
+    private var stopped:Boolean = false
 
 
     public fun startTrip(){
@@ -21,12 +22,13 @@ class Trip(nameP : String){
     }
 
     public fun unPauseTrip(){
-        this.paused = true
+        this.paused = false
 
     }
 
     public fun stopTrip(){
         pauseTrip()
+        this.stopped = true
     }
 
     public fun setCurrentTime() {
@@ -39,5 +41,12 @@ class Trip(nameP : String){
     }
     public fun isPaused() : Boolean{
         return this.paused
+    }
+    public fun isStopped() : Boolean{
+        return this.stopped
+    }
+
+    public fun isRunning(): Boolean {
+        return !this.isPaused() && !this.isStopped()
     }
 }

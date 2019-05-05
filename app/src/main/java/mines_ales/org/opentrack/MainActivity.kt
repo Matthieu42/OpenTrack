@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_main.view.*
+import mines_ales.org.opentrack.model.OpenTrackData
 import mines_ales.org.opentrack.model.Trip
 import java.text.SimpleDateFormat
 import java.util.*
@@ -14,7 +14,7 @@ import java.util.*
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var durationTextView: TextView
-    private val trip: Trip = Trip("Default")
+    private var trip: Trip = Trip("Default")
     private val mHandler: Handler = Handler()
 
 
@@ -37,11 +37,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.pauseButton -> {
-                (v as Button).text = "ok"
-                if (trip.isPaused()) {
-                    trip.unPauseTrip()
-                } else {
+                if (trip.isRunning()) {
+                    (v as Button).text = getString(R.string.unpause)
                     trip.pauseTrip()
+                } else if (!trip.isStopped()) {
+                    (v as Button).text = getString(R.string.pause)
+                    trip.unPauseTrip()
                 }
             }
         }
@@ -55,6 +56,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     fun stopTrip(v: View){
         (v as Button).text = getString(R.string.start)
         this.trip.stopTrip()
+        OpenTrackData.tripHistory.addTrip(this.trip)
+        this.trip = Trip("new trip")
     }
 
     fun updateTimer(){
@@ -64,7 +67,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     var mStatusChecker: Runnable = object : Runnable {
         override fun run() {
             try {
-                if(!trip.isPaused()){
+                if(trip.isRunning()){
                     updateTimer()
                 }
             } finally {

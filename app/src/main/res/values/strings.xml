@@ -7,4 +7,5 @@
     <string name="stop">Stop</string>
     <string name="avg_speed">AVG Speed</string>
     <string name="distance">Distance</string>
+    <string name="unpause">Unpause</string>
 </resources>
