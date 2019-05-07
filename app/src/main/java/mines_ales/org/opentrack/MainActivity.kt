@@ -29,20 +29,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         when (v.id) {
 
             R.id.startButton -> {
-                if (trip.isPaused()) {
+                if (!trip.isRunning()) {
                     startTrip(v)
 
                 } else {
                     stopTrip(v)
-                }
-            }
-            R.id.pauseButton -> {
-                if (trip.isRunning()) {
-                    (v as Button).text = getString(R.string.unpause)
-                    trip.pauseTrip()
-                } else if (!trip.isStopped()) {
-                    (v as Button).text = getString(R.string.pause)
-                    trip.unPauseTrip()
                 }
             }
         }
