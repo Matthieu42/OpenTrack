@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var durationTextView: TextView
     private var trip: Trip = Trip("Default")
     private val mHandler: Handler = Handler()
-    private val locationTrackerService: LocationTrackerService = LocationTrackerService()
+    private val locationTrackingService: LocationTrackingService = LocationTrackingService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,5 +71,3 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         mStatusChecker.run()
     }
 }
-
-
