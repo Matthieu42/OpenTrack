@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun updateTimer(){
-        this.durationTextView.text = SimpleDateFormat("mm:ss").format(Date(this.trip.getCurrentTime()))
+        this.durationTextView.text = SimpleDateFormat("HH:mm:ss").format(Date(this.trip.getCurrentTime()))
     }
 
     var mStatusChecker: Runnable = object : Runnable {
