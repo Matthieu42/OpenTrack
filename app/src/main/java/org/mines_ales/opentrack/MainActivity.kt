@@ -1,5 +1,6 @@
-package mines_ales.org.opentrack
+package org.mines_ales.opentrack
 
+import android.Manifest
 import android.location.Location
 import android.os.Bundle
 import android.os.Handler
@@ -7,12 +8,14 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import mines_ales.org.opentrack.model.OpenTrackData
-import mines_ales.org.opentrack.model.Trip
+import mines_ales.org.opentrack.LocationTrackingService
+import org.mines_ales.opentrack.model.OpenTrackData
+import org.mines_ales.opentrack.model.Trip
+import pub.devrel.easypermissions.EasyPermissions
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MainActivity : AppCompatActivity(), View.OnClickListener,LocationTrackingService.LocationListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener, LocationTrackingService.LocationListener {
 
     private lateinit var durationTextView: TextView
     private var trip: Trip = Trip("Default")
@@ -25,7 +28,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,LocationTrackingS
         setContentView(R.layout.activity_main)
         this.durationTextView = findViewById(R.id.durationTextView)
         this.locationTrackingService = LocationTrackingService(this,this)
-
     }
 
 
@@ -77,14 +79,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,LocationTrackingS
     override fun onLocationFound(location: Location?) {
         locationTrackingService.stopLocationUpdates()
         mPosition = location
-        findViewById<TextView>(R.id.avgSpeedTextView).text = location.toString()
+        findViewById<TextView>(R.id.speedTextView).text = location!!.speed.toString()
     }
 
     override fun locationError(msg: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun checkRequiredLocationPermission(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val perms = arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
+        return if (!EasyPermissions.hasPermissions(this, *perms)) {
+            EasyPermissions.requestPermissions(
+                    this, "File ton GPS STP",
+                    LocationTrackingService.RUN_TIME_PERMISSION_CODE, *perms
+            )
+            false
+        } else {
+            true
+        }
     }
 }

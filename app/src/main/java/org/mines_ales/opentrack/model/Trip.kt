@@ -1,4 +1,4 @@
-package mines_ales.org.opentrack.model
+package org.mines_ales.opentrack.model
 
 import java.lang.System.currentTimeMillis
 

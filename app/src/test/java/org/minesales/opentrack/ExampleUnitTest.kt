@@ -1,4 +1,4 @@
-package mines_ales.org.opentrack
+package org.minesales.opentrack
 
 import org.junit.Test
 

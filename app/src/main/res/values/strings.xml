@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Open Track</string>
+    <string name="app_name">OpenTrack</string>
     <string name="duration">Duration</string>
     <string name="start">Start</string>
     <string name="pause">Pause</string>
