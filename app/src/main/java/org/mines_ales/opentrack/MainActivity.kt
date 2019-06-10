@@ -49,10 +49,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, LocationTracking
         (v as Button).text = getString(R.string.stop)
         this.trip.startTrip()
         this.startTimerUpdater()
+        this.locationTrackingService.onStart()
     }
     fun stopTrip(v: View){
         (v as Button).text = getString(R.string.start)
         this.trip.stopTrip()
+        this.locationTrackingService.onPause()
         OpenTrackData.tripHistory.addTrip(this.trip)
         this.trip = Trip("new trip")
     }
@@ -77,12 +79,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, LocationTracking
         mStatusChecker.run()
     }
     override fun onLocationFound(location: Location?) {
-        locationTrackingService.stopLocationUpdates()
+        findViewById<TextView>(R.id.altitudeTextView).text = "OK"
         mPosition = location
-        findViewById<TextView>(R.id.speedTextView).text = location!!.speed.toString()
+        findViewById<TextView>(R.id.altitudeTextView).text = mPosition!!.altitude.toInt().toString()
+
+        findViewById<TextView>(R.id.speedTextView).text = mPosition!!.speed.toString()
     }
 
     override fun locationError(msg: String) {
+        findViewById<TextView>(R.id.altitudeTextView).text = "ERROR"
     }
 
     override fun checkRequiredLocationPermission(): Boolean {

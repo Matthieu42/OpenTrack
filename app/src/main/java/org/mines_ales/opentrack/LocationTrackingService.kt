@@ -53,7 +53,7 @@ class LocationTrackingService(private val mActivity: Activity, private val mList
         //mLocationRequest!!.smallestDisplacement = DISPLACEMENT.toFloat()
     }
 
-    //In the start method, we chacking permissions. It'will invoke a permision required pop if required permission not given
+    //In the start method, we checking permissions. It'will invoke a permision required pop if required permission not given
     fun onStart() {
         if (!checkRequiredLocationPermission()) {
             getLastLocation()
@@ -148,9 +148,9 @@ class LocationTrackingService(private val mActivity: Activity, private val mList
     }
 
     companion object {
-        private const val UPDATE_INTERVAL = 1000 // 10 min
-        private const val FASTEST_INTERVAL = 1000 // 5 min
-        private const val DISPLACEMENT = 10 // 1 km
+        private const val UPDATE_INTERVAL = 1000
+        private const val FASTEST_INTERVAL = 1000
+        private const val DISPLACEMENT = 10
         const  val RUN_TIME_PERMISSION_CODE = 999
     }
 }
