@@ -1,4 +1,4 @@
-package mines_ales.org.opentrack
+package org.mines_ales.opentrack
 
 import android.Manifest
 import android.app.Activity

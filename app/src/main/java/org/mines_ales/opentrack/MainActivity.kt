@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import mines_ales.org.opentrack.LocationTrackingService
 import org.mines_ales.opentrack.model.OpenTrackData
 import org.mines_ales.opentrack.model.Trip
 import pub.devrel.easypermissions.EasyPermissions
