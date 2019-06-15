@@ -8,8 +8,11 @@ class TripHistory {
         this.tripList.add(trip)
     }
 
-    public fun getTrip(): Trip {
-        return tripList[0]
+    public fun getTrip(i:Int): Trip {
+        return tripList[i]
+    }
+    public fun getTrips(): ArrayList<Trip> {
+        return tripList
     }
 
 }
