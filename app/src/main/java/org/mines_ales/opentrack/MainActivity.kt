@@ -43,10 +43,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, LocationTracking
                 }
             }
             R.id.openView -> {
-                val intent = Intent(this, ViewTripActivity::class.java)
-                // To pass any data to next activity
-                //intent.putExtra("keyIdentifier", value) On peut foutre ici le trajet à ouvrir avec le view trip
-                // start your next activity
+                val intent = Intent(this, TripHistoryActivity::class.java )
                 startActivity(intent)
             }
         }

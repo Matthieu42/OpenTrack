@@ -98,20 +98,12 @@ class LocationTrackingService(private val mActivity: Activity, private val mList
                 when (exception.statusCode) {
                     LocationSettingsStatusCodes.RESOLUTION_REQUIRED ->{
                         val resolvable = exception as ResolvableApiException
-
                         resolvable.startResolutionForResult(mActivity, GPS_REQUEST_CODE)
 
                     }
-                    // Location settings are not satisfied. But could be fixed by showing the
-                    // user a dialog.
-                    // Cast to a resolvable exception.
                     LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE -> {
-                        //empty
                     }
                 }
-                // Show the dialog by calling startResolutionForResult(),
-                // Location settings are not satisfied. However, we have no way to fix the
-                // settings so we won't show the dialog.
             }
         }
     }

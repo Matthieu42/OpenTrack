@@ -1,7 +1,11 @@
 package org.mines_ales.opentrack.model
 
 import org.osmdroid.util.GeoPoint
+import java.lang.StringBuilder
 import java.lang.System.currentTimeMillis
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class Trip(nameP : String){
 
@@ -12,34 +16,57 @@ class Trip(nameP : String){
     private var stopped:Boolean = false
     private var pointList: ArrayList<GeoPoint> = ArrayList()
 
-    public fun startTrip(){
+    fun startTrip(){
         this.started = true
         this.startTime = currentTimeMillis()
     }
 
-    public fun stopTrip(){
+    fun stopTrip(){
         this.stopped = true
     }
 
-    public fun setCurrentTime() {
+    fun setCurrentTime() {
         this.currentTime = currentTimeMillis() - this.startTime
     }
 
-    public fun getCurrentTime() : Long{
+    fun getCurrentTime() : Long{
         this.setCurrentTime()
         return currentTime
     }
-    public fun isStopped() : Boolean{
+
+    fun isStopped() : Boolean{
         return this.stopped
     }
 
-    public fun isRunning(): Boolean {
+    fun isRunning(): Boolean {
         return this.started && !this.isStopped()
     }
-    public fun addGeoPoint(latitude: Double, longitude:Double){
+
+    fun addGeoPoint(latitude: Double, longitude:Double){
         pointList.add(GeoPoint(latitude,longitude))
     }
-    public fun getGeopPoints(): ArrayList<GeoPoint> {
+
+    fun getGeoPoints(): ArrayList<GeoPoint> {
         return this.pointList
+    }
+
+    override fun toString(): String {
+        return Date(this.startTime).toString() + Date(currentTime).toString()
+    }
+
+    fun getStartDate(): String{
+        val dateFormat = SimpleDateFormat("dd MMMM yyyy HH:mm:ss",
+            Locale.getDefault())
+        dateFormat.timeZone = TimeZone.getDefault()
+        return dateFormat.format(this.startTime)
+    }
+
+    fun getTotalTime(): String{
+
+        val minutes = this.currentTime / 1000 / 60
+        val seconds = this.currentTime  / 1000 % 60
+
+        return String.format("%d minutes and %d seconds.", minutes, seconds)
+
     }
 }

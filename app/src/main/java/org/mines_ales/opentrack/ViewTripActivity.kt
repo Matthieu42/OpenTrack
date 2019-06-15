@@ -27,7 +27,7 @@ class ViewTripActivity : AppCompatActivity() {
         map!!.setMultiTouchControls(true)
         this.line = Polyline()
 
-        this.geoPoints = OpenTrackData.tripHistory.getTrip(0).getGeopPoints() //TODO A changer par la recup du trip envoyé
+        this.geoPoints = OpenTrackData.tripHistory.getTrip(intent.extras["id"] as Int).getGeoPoints()
         this.line.setPoints(this.geoPoints)
         map!!.overlayManager.add(this.line)
 
