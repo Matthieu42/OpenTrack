@@ -1,6 +1,7 @@
 package org.mines_ales.opentrack
 
 import android.Manifest
+import android.content.Intent
 import android.location.Location
 import android.os.Bundle
 import android.os.Handler
@@ -41,6 +42,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, LocationTracking
                     stopTrip(v)
                 }
             }
+            R.id.openView -> {
+                val intent = Intent(this, ViewTripActivity::class.java)
+                // To pass any data to next activity
+                //intent.putExtra("keyIdentifier", value)
+                // start your next activity
+                startActivity(intent)
+            }
         }
     }
 
@@ -78,22 +86,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, LocationTracking
         mStatusChecker.run()
     }
     override fun onLocationFound(location: Location?) {
-        findViewById<TextView>(R.id.altitudeTextView).text = "OK"
         mPosition = location
-        findViewById<TextView>(R.id.altitudeTextView).text = mPosition!!.altitude.toInt().toString()
-
-        findViewById<TextView>(R.id.speedTextView).text = mPosition!!.speed.toString()
+        trip.addGeoPoint(mPosition!!.latitude,mPosition!!.longitude)
+        findViewById<TextView>(R.id.altitudeTextView).text = mPosition!!.altitude.toInt().toString() + "m"
+        findViewById<TextView>(R.id.speedTextView).text = ("%.2f".format(3.6 * mPosition!!.speed).toDouble()).toString() + "Km/h"
     }
 
     override fun locationError(msg: String) {
-        findViewById<TextView>(R.id.altitudeTextView).text = "ERROR"
     }
 
     override fun checkRequiredLocationPermission(): Boolean {
         val perms = arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
         return if (!EasyPermissions.hasPermissions(this, *perms)) {
             EasyPermissions.requestPermissions(
-                    this, "File ton GPS STP",
+                    this, "Veuillez autoriser le GPS",
                     LocationTrackingService.RUN_TIME_PERMISSION_CODE, *perms
             )
             false

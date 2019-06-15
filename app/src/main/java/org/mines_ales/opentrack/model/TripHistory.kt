@@ -1,11 +1,15 @@
 package org.mines_ales.opentrack.model
 
 
-class TripHistory(){
+class TripHistory {
     private val tripList: ArrayList<Trip> = arrayListOf()
 
     public fun addTrip(trip : Trip){
         this.tripList.add(trip)
+    }
+
+    public fun getTrip(): Trip {
+        return tripList[0]
     }
 
 }
