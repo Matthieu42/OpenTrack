@@ -30,7 +30,8 @@ class Trip(nameP : String){
     }
 
     fun getCurrentTime() : Long{
-        this.setCurrentTime()
+        if(isRunning())
+            this.setCurrentTime()
         return currentTime
     }
 

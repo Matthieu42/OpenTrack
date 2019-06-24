@@ -8,8 +8,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import org.mines_ales.opentrack.R
+import org.mines_ales.opentrack.StatActivity
 import org.mines_ales.opentrack.ViewTripActivity
 
 class TripAdapter(val tripHistory: TripHistory, val context: Context): RecyclerView.Adapter<TripAdapter.ViewHolder>() {
@@ -17,8 +19,12 @@ class TripAdapter(val tripHistory: TripHistory, val context: Context): RecyclerV
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
                 holder.txtName.text = tripHistory.getTrip(position).getStartDate()
                 holder.txtTitle.text = tripHistory.getTrip(position).getTotalTime()
-                holder.itemView.setOnClickListener {
+                holder.mapButton.setOnClickListener {
                         val intent = Intent(context, ViewTripActivity::class.java)
+                        intent.putExtra("id",position)
+                        context.startActivity(intent) }
+                holder.statButton.setOnClickListener {
+                        val intent = Intent(context, StatActivity::class.java)
                         intent.putExtra("id",position)
                         context.startActivity(intent) }
 
@@ -36,6 +42,8 @@ class TripAdapter(val tripHistory: TripHistory, val context: Context): RecyclerV
         class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
                 val txtName: TextView = itemView.findViewById(R.id.txtName)
                 val txtTitle: TextView = itemView.findViewById(R.id.txtTitle)
+                val mapButton: Button = itemView.findViewById(R.id.openMapActivity)
+                val statButton: Button = itemView.findViewById(R.id.openStatActivity)
 
         }
 

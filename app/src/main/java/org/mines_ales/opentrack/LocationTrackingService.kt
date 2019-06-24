@@ -72,11 +72,11 @@ class LocationTrackingService(private val mActivity: Activity, private val mList
 
     private fun checkRequiredLocationPermission(): Boolean {
         val perms = arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
-        if (!EasyPermissions.hasPermissions(mActivity, *perms)) {
+        return if (!EasyPermissions.hasPermissions(mActivity, *perms)) {
             mListener.checkRequiredLocationPermission()
-            return false
+            false
         } else {
-            return true
+            true
         }
     }
 
